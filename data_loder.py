@@ -1,8 +1,9 @@
 import scipy.io
 import numpy as np
 import pandas as pd
-import torchvision.datasets as dset
 import os
+# The code is adapted from  https://github.com/lironber/GOAD.git
+
 
 class Data_Loader:
 
@@ -48,14 +49,14 @@ class Data_Loader:
         return 2 * (data / 255.) - mu
 
     def get_dataset(self, dataset_name, c_percent=None, true_label=1):
-        if dataset_name == 'kdd':
-            return self.KDD99_train_valid_data()
-        if dataset_name == 'kddrev':
-            return self.KDD99Rev_train_valid_data()
         if dataset_name == 'thyroid':
             return self.Thyroid_train_valid_data()
         if dataset_name == 'arrhythmia':
             return self.Arrhythmia_train_valid_data()
+        if dataset_name == 'kdd':
+            return self.KDD99_train_valid_data()
+        if dataset_name == 'kddrev':
+            return self.KDD99Rev_train_valid_data()
         if dataset_name == 'ckdd':
             return self.contaminatedKDD99_train_valid_data(c_percent)
 
